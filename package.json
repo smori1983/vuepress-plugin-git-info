@@ -11,7 +11,8 @@
     "vuepress-plugin-git-log": "^1.0.1"
   },
   "devDependencies": {
-    "vuepress": "^1.9.5"
+    "vuepress": "^1.9.5",
+    "vuepress-types": "^0.9.4"
   },
   "repository": {
     "type": "git",
