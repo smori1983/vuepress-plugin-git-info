@@ -10,6 +10,14 @@ module.exports = {
   },
 
   plugins: [
+    ['git-log', {
+      formatTime: (timestamp) => {
+        return timestamp;
+      },
+      additionalArgs: '--no-merges',
+      onlyFirstAndLastCommit: false,
+    }],
+
     require('../../src'),
   ],
 };
