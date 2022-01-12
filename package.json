@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vuepress-plugin-git-log": "^1.0.1"
+  },
   "devDependencies": {
     "vuepress": "^1.9.5"
   },
