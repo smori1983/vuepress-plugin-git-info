@@ -1,0 +1,22 @@
+{
+  "name": "vuepress-plugin-git-info",
+  "version": "0.1.0",
+  "description": "Integrate git information into vuepress site.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smori1983/vuepress-plugin-git-info.git"
+  },
+  "keywords": [
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "author": "Shinichiro MORI",
+  "license": "MIT",
+  "homepage": "https://github.com/smori1983/vuepress-plugin-git-info#readme"
+}
