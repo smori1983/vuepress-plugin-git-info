@@ -18,6 +18,9 @@ module.exports = {
       onlyFirstAndLastCommit: false,
     }],
 
-    require('../../src'),
+    [require('../../src'), {
+      useGlobalUi: true,
+      usePageBlock: true,
+    }],
   ],
 };
