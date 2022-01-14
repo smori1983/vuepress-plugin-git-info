@@ -3,6 +3,7 @@
     class="plugin-git-info"
     v-if="git"
   >
+    <hr>
     <div class="label">Git info of this page</div>
     <git-info v-bind:git="git"></git-info>
   </div>
