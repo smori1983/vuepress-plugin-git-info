@@ -1,7 +1,7 @@
-import GlobalUi from './components/GlobalUi';
-import PageBlock from './components/PageBlock';
+import BlockGlobalUi from './components/BlockGlobalUi';
+import BlockPageEmbed from './components/BlockPageEmbed';
 
 export default ({ Vue }) => {
-  Vue.component('PluginGitInfoGlobalUi', GlobalUi);
-  Vue.component('PluginGitInfoPageBlock', PageBlock);
+  Vue.component('PluginGitInfoGlobalUi', BlockGlobalUi);
+  Vue.component('PluginGitInfoPageEmbed', BlockPageEmbed);
 };

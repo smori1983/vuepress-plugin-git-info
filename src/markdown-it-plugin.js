@@ -5,7 +5,7 @@ module.exports = (md) => {
     token1.block = true;
 
     const token2 = new state.Token('html_block', '', 0);
-    token2.content = '<PluginGitInfoPageBlock/>';
+    token2.content = '<PluginGitInfoPageEmbed/>';
     token2.block = true;
 
     state.tokens.push(token1);

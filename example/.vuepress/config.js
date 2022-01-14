@@ -20,7 +20,7 @@ module.exports = {
 
     [require('../../src'), {
       useGlobalUi: true,
-      usePageBlock: true,
+      usePageEmbed: true,
     }],
   ],
 };
