@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = (options) => {
   const {
     useGlobalUi = false,
-    usePageBlock = false,
+    usePageEmbed = false,
   } = options;
 
   return {
@@ -12,7 +12,7 @@ module.exports = (options) => {
     ],
 
     chainMarkdown(config) {
-      if (usePageBlock) {
+      if (usePageEmbed) {
         config
           .plugin('vuepress-plugin-git-info')
           .use(require('./markdown-it-plugin'));
