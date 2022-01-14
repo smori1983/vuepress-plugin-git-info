@@ -1,9 +1,19 @@
 <template>
   <ul class="git-info">
-    <li class="git-info-created">created: {{ created }}</li>
-    <li class="git-info-updated" v-if="isUpdated">last updated: {{ updated }}</li>
-    <li class="git-info-authors">authors: {{ authors }}</li>
-    <li class="git-info-hash" v-if="hash">{{ hash }}</li>
+    <li
+      class="git-info-created"
+    >created: {{ created }}</li>
+    <li
+      class="git-info-updated"
+      v-if="isUpdated"
+    >last updated: {{ updated }}</li>
+    <li
+      class="git-info-authors"
+    >authors: {{ authors }}</li>
+    <li
+      class="git-info-hash"
+      v-if="hash"
+    >{{ hash }}</li>
   </ul>
 </template>
 
