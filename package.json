@@ -15,6 +15,12 @@
     "vuepress": "^1.9.5",
     "vuepress-types": "^0.9.4"
   },
+  "files": [
+    "src/**",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smori1983/vuepress-plugin-git-info.git"
