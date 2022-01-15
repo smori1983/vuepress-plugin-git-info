@@ -21,6 +21,12 @@ module.exports = {
     [require('../../src'), {
       useGlobalUi: true,
       usePageEmbed: true,
+      excludePaths: [
+        '/cat1/page2.html',
+      ],
+      excludeCallback: ($page) => {
+        return $page.path.indexOf('/cat3/') === 0;
+      },
     }],
   ],
 };
