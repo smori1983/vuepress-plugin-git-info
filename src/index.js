@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('@vuepress/core/lib/node/Page')} Page
+ */
+
 const path = require('path');
 
 module.exports = (options) => {
@@ -7,6 +11,20 @@ module.exports = (options) => {
     excludePaths = [],
     excludeCallback = () => { return false; },
   } = options;
+
+  /**
+   * @param {Page} $page
+   * @returns {boolean}
+   */
+  const shouldDisable = ($page) => {
+    if (Array.isArray(excludePaths) && excludePaths.includes($page.path)) {
+      return true;
+    }
+
+    if (typeof excludeCallback === 'function' && excludeCallback($page)) {
+      return true;
+    }
+  };
 
   return {
     enhanceAppFiles: [
@@ -24,5 +42,13 @@ module.exports = (options) => {
     globalUIComponents: useGlobalUi ? [
       'PluginGitInfoGlobalUi',
     ] : [],
+
+    extendPageData($page) {
+      if (shouldDisable($page)) {
+        $page.plugin_git_info = {
+          disabled: true,
+        };
+      }
+    },
   };
 };
