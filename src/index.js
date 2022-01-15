@@ -4,6 +4,8 @@ module.exports = (options) => {
   const {
     useGlobalUi = false,
     usePageEmbed = false,
+    excludePaths = [],
+    excludeCallback = () => { return false; },
   } = options;
 
   return {
