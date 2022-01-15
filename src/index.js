@@ -15,9 +15,11 @@ module.exports = (options) => {
   /**
    * @param {Page} $page
    * @returns {boolean}
+   *
+   * At this timing, permalink is not set to $page.path.
    */
-  const shouldDisable = ($page) => {
-    if (Array.isArray(excludePaths) && excludePaths.includes($page.path)) {
+  const disabledByOption = ($page) => {
+    if (Array.isArray(excludePaths) && excludePaths.includes($page.regularPath)) {
       return true;
     }
 
@@ -44,7 +46,7 @@ module.exports = (options) => {
     ] : [],
 
     extendPageData($page) {
-      if (shouldDisable($page)) {
+      if (disabledByOption($page)) {
         $page.plugin_git_info = {
           disabled: true,
         };

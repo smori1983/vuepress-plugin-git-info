@@ -23,9 +23,10 @@ module.exports = {
       usePageEmbed: true,
       excludePaths: [
         '/cat1/page2.html',
+        '/cat2/page1.html',
       ],
       excludeCallback: ($page) => {
-        return $page.path.indexOf('/cat3/') === 0;
+        return $page.regularPath.indexOf('/cat3/') === 0;
       },
     }],
   ],
