@@ -96,7 +96,7 @@ export default {
 
     getAuthors(git) {
       if (Array.isArray(git.contributors)) {
-        return git.contributors.join(', ');
+        return git.contributors.sort().join(', ');
       }
 
       return git.author;
