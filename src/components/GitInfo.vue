@@ -39,7 +39,7 @@ export default {
       return this.created !== this.updated;
     },
     authors() {
-      return this.getAuthors(this.git.author, this.git.contributors);
+      return this.getAuthors(this.git);
     },
     hash() {
       return this.getHash(this.git);
@@ -94,12 +94,12 @@ export default {
       }
     },
 
-    getAuthors(author, contributors) {
-      if (Array.isArray(contributors)) {
-        return contributors.join(', ');
+    getAuthors(git) {
+      if (Array.isArray(git.contributors)) {
+        return git.contributors.join(', ');
       }
 
-      return author;
+      return git.author;
     },
 
     getHash(git) {
