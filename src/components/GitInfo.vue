@@ -95,11 +95,11 @@ export default {
     },
 
     getAuthors(git) {
-      if (Array.isArray(git.contributors)) {
-        return git.contributors.sort().join(', ');
+      if (!Array.isArray(git.contributors)) {
+        return git.author;
       }
 
-      return git.author;
+      return git.contributors.sort().join(', ');
     },
 
     getHash(git) {
