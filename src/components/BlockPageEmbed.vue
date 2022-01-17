@@ -3,7 +3,6 @@
     class="plugin-git-info"
     v-if="git"
   >
-    <hr>
     <div class="label">Git info of this page</div>
     <git-info v-bind:git="git"></git-info>
   </div>
@@ -36,6 +35,10 @@ export default {
 
 <style lang="stylus" scoped>
 .plugin-git-info {
+  margin-top 2rem
+  padding-top 2rem
+  border-top 1px solid $borderColor
+
   .label {
     font-weight: bold
   }
