@@ -1,9 +1,19 @@
 <template>
-  <ul>
-    <li>created: {{ created }}</li>
-    <li v-if="isUpdated">last updated: {{ updated }}</li>
-    <li>authors: {{ authors }}</li>
-    <li v-if="hash">{{ hash }}</li>
+  <ul class="git-info">
+    <li
+      class="git-info-created"
+    >created: {{ created }}</li>
+    <li
+      class="git-info-updated"
+      v-if="isUpdated"
+    >last updated: {{ updated }}</li>
+    <li
+      class="git-info-authors"
+    >authors: {{ authors }}</li>
+    <li
+      class="git-info-hash"
+      v-if="hash"
+    >{{ hash }}</li>
   </ul>
 </template>
 
@@ -29,7 +39,7 @@ export default {
       return this.created !== this.updated;
     },
     authors() {
-      return this.getAuthors(this.git.author, this.git.contributors);
+      return this.getAuthors(this.git);
     },
     hash() {
       return this.getHash(this.git);
@@ -84,12 +94,36 @@ export default {
       }
     },
 
-    getAuthors(author, contributors) {
-      if (Array.isArray(contributors)) {
-        return contributors.join(', ');
+    getAuthors(git) {
+      if (!Array.isArray(git.commits)) {
+        return git.author;
       }
 
-      return author;
+      const userCommitMap = git.commits
+        .map((commit) => {
+          return commit.authorName;
+        })
+        .reduce((prev, current) => {
+          prev[current] = prev[current] || {
+            name: current,
+            count: 0,
+          };
+          prev[current].count += 1;
+
+          return prev;
+        }, {});
+
+      return Object.values(userCommitMap)
+        .sort((a, b) => {
+          if (a.count === b.count) {
+            return a.name > b.name ? 1 : -1;
+          }
+          return a.count < b.count ? 1 : -1;
+        })
+        .map((user) => {
+          return sprintf('%s (%d)', user.name, user.count);
+        })
+        .join(', ');
     },
 
     getHash(git) {
