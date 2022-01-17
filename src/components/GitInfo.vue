@@ -95,11 +95,35 @@ export default {
     },
 
     getAuthors(git) {
-      if (!Array.isArray(git.contributors)) {
+      if (!Array.isArray(git.commits)) {
         return git.author;
       }
 
-      return git.contributors.sort().join(', ');
+      const userCommitMap = git.commits
+        .map((commit) => {
+          return commit.authorName;
+        })
+        .reduce((prev, current) => {
+          prev[current] = prev[current] || {
+            name: current,
+            count: 0,
+          };
+          prev[current].count += 1;
+
+          return prev;
+        }, {});
+
+      return Object.values(userCommitMap)
+        .sort((a, b) => {
+          if (a.count === b.count) {
+            return a.name > b.name ? 1 : -1;
+          }
+          return a.count < b.count ? 1 : -1;
+        })
+        .map((user) => {
+          return sprintf('%s (%d)', user.name, user.count);
+        })
+        .join(', ');
     },
 
     getHash(git) {
