@@ -7,6 +7,7 @@ tags:
   - mango
   - muscat
   - peach
+permalink: /category2-page1.html
 ---
 
 # Category2 - Page1

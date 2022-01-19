@@ -1,10 +1,32 @@
+/**
+ * @typedef {import('@vuepress/core/lib/node/Page')} Page
+ */
+
 const path = require('path');
 
 module.exports = (options) => {
   const {
     useGlobalUi = false,
     usePageEmbed = false,
+    excludePaths = [],
+    excludeCallback = () => { return false; },
   } = options;
+
+  /**
+   * @param {Page} $page
+   * @returns {boolean}
+   *
+   * At this timing, permalink is not set to $page.path.
+   */
+  const disabledByOption = ($page) => {
+    if (Array.isArray(excludePaths) && excludePaths.includes($page.regularPath)) {
+      return true;
+    }
+
+    if (typeof excludeCallback === 'function' && excludeCallback($page)) {
+      return true;
+    }
+  };
 
   return {
     enhanceAppFiles: [
@@ -22,5 +44,13 @@ module.exports = (options) => {
     globalUIComponents: useGlobalUi ? [
       'PluginGitInfoGlobalUi',
     ] : [],
+
+    extendPageData($page) {
+      if (disabledByOption($page)) {
+        $page.plugin_git_info = {
+          disabled: true,
+        };
+      }
+    },
   };
 };
