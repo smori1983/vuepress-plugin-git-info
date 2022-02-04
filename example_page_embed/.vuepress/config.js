@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Hello VuePress',
+  title: 'PageEmbed demo',
 
   themeConfig: {
     sidebar: [
@@ -19,7 +19,6 @@ module.exports = {
     }],
 
     [require('../../src'), {
-      useGlobalUi: true,
       usePageEmbed: true,
       excludePaths: [
         '/cat1/page2.html',

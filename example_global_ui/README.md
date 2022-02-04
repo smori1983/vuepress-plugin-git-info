@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: example site
+heroText: GlobalUi component demo
 tagline: vuepress-plugin-git-info
 actionText: Get Started →
 actionLink: /cat1/page1.html

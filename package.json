@@ -4,7 +4,8 @@
   "description": "Integrate git information into vuepress site.",
   "main": "src/index.js",
   "scripts": {
-    "dev": "vuepress dev --no-cache example",
+    "dev:global-ui": "vuepress dev --no-cache example_global_ui",
+    "dev:page-embed": "vuepress dev --no-cache example_page_embed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
