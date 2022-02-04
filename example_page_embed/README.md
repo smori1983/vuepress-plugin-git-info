@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: PageEmbed demo
+heroText: PageEmbed component demo
 tagline: vuepress-plugin-git-info
 actionText: Get Started →
 actionLink: /cat1/page1.html
