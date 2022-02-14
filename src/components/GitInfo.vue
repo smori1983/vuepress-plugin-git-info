@@ -1,11 +1,7 @@
 <template>
   <ul class="git-info">
     <li
-      class="git-info-created"
-    >created: {{ created }}</li>
-    <li
       class="git-info-updated"
-      v-if="isUpdated"
     >last updated: {{ updated }}</li>
     <li
       class="git-info-authors"
@@ -29,14 +25,8 @@ export default {
   },
 
   computed: {
-    created() {
-      return this.getDate(this.getCreated(this.git));
-    },
     updated() {
       return this.getDate(this.getUpdated(this.git));
-    },
-    isUpdated() {
-      return this.created !== this.updated;
     },
     authors() {
       return this.getAuthors(this.git);
@@ -47,17 +37,6 @@ export default {
   },
 
   methods: {
-    /**
-     * Note: vuepress-plugin-git-log has bug in extendPageData().
-     */
-    getCreated(git) {
-      if (Array.isArray(git.commits)) {
-        return git.commits[git.commits.length - 1].authorTime;
-      } else {
-        return git.created;
-      }
-    },
-
     /**
      * Note: vuepress-plugin-git-log has bug in extendPageData().
      */
